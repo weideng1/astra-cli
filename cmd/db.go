@@ -32,6 +32,7 @@ func DBUsage() string {
 		fmt.Sprintf("\t%v", db.CreateUsage()),
 		fmt.Sprintf("\t%v", db.DeleteUsage()),
 		fmt.Sprintf("\t%v", db.GetUsage()),
+                fmt.Sprintf("\t%v", db.GetSCBUsage()),
 		fmt.Sprintf("\t%v", db.ListUsage()),
 		fmt.Sprintf("\t%v", db.ParkUsage()),
 		fmt.Sprintf("\t%v", db.UnparkUsage()),
@@ -70,6 +71,8 @@ func ExecuteDB(args []string, confFile string) error {
 		return db.ExecuteResize(args[1:], client)
 	case "get":
 		return db.ExecuteGet(args[1:], client)
+        case "getscb":
+                return db.ExecuteGetSCB(args[1:], client)
 	case "list":
 		return db.ExecuteList(args[1:], client)
 	case "tiers":
